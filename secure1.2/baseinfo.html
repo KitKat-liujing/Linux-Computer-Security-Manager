@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,height=device-height">
+<title>电脑基本信息</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="js/select-ui.min.js"></script>
+<script type="text/javascript" src="editor/kindeditor.js"></script>  
+<style type="text/css">
+.usual{width:660px;}
+</style>
+</head>
+
+<body>
+<script src="js/info.js"></script>
+<!--  显示当前网页位置  -->
+<div class="place">
+	<span>位置：</span>
+	<ul class="placeul">
+		<li><a href="first/index.html">首页</a></li> <!--  为"首页"设置连接为first/index.html(即点击跳转到首页)  -->
+		<li><a href="baseinfo.html">电脑基本信息</a></li>  <!--  为"电脑基本信息"设置链接为baseinfo.html(即点击刷新) -->
+	</ul>
+</div>
+
+<div class="formbody" >
+
+
+	<div id="usual1" class="usual"> 
+
+		<div class="itab">
+			<ul> 
+				<li><a href="#tab1" class="selected">系统信息</a></li> <!--tab1显示系统信息 -->
+				<li><a href="#tab2">资源信息</a></li> <!--tab2显示资源信息 -->
+				<li><a href="#tab3">磁盘信息</a></li> <!--tab3显示磁盘信息 -->
+				<li><a href="#tab4">网络信息</a></li> <!--tab4显示网络信息 -->
+				<li><a href="#tab5">软件信息</a></li> <!--tab5显示软件信息 -->
+				<li><a href="#tab6">用户信息</a></li> <!--tab6显示用户信息 -->
+			</ul>
+		</div> 
+
+		<!--系统信息显示区域-->
+		<div id="tab1" class="tabson">
+
+			<!--实时动态显示系统信息 -->
+			<script>
+window.setInterval("sysinfo()",700);
+			</script>
+
+			<li><p><b>系统信息<b></p></li>
+					<!--  把信息显示在文本框内  -->
+					<textarea id="sys" rows="18" cols="73" margin="20px" style="border:solid 2px gray; border-radius:6px;background:#f0f9fd;margin-left:25px;padding:10px" readonly>
+
+					</textarea>
+
+
+
+				</div>   
+
+				<!--资源信息显示区域-->
+				<div id="tab2" class="tabson">
+
+					<!--实时动态显示资源信息 -->
+					<script>
+window.setInterval("sourceinfo()",700);
+					</script>
+					<li><p><b>资源信息</b></p></li>
+					<!--  把资源信息显示在文本框内  -->
+					<textarea id="source" rows="18" cols="73" margin="20px" style="border:solid 2px gray; border-radius:6px;background:#f0f9fd;margin-left:25px;padding:10px" readonly>
+
+					</textarea>
+
+				</div>
+
+				<!--磁盘信息显示区域-->
+				<div id="tab3" class="tabson">
+					<!--实时动态显示 -->
+					<script>
+window.setInterval("diskinfo()",700);
+					</script>
+					<li><p><b>磁盘信息<b></p></li>
+							<!--  把磁盘信息显示在文本框内  -->
+							<textarea id="disk" rows="18" cols="73" margin="20px" style="border:solid 2px gray; border-radius:6px;background:#f0f9fd;margin-left:25px;padding:10px" readonly>
+
+							</textarea>
+
+							<!--网络信息显示区域-->
+						</div>
+						<div id="tab4" class="tabson">
+							<!--实时动态显示 -->
+							<script>
+window.setInterval("networkinfo()",700);
+							</script>
+							<li><p><b>网络信息<b></p></li>
+									<!--  把网络信息显示在文本框内  -->
+									<textarea id="network" rows="18" cols="73" margin="20px" style="border:solid 2px gray; border-radius:6px;background:#f0f9fd;margin-left:25px;padding:10px" readonly>
+
+									</textarea>
+
+									<!--软件信息显示区域-->
+								</div>
+								<div id="tab5" class="tabson">
+									<!--实时动态显示 -->
+									<script>
+window.setInterval("softinfo()",700);
+									</script>
+									<li><p><b>软件信息<b></p></li>
+											<!--  把软件信息显示在文本框内  -->
+											<textarea id="soft" rows="18" cols="73" margin="20px" style="border:solid 2px gray; border-radius:6px;background:#f0f9fd;margin-left:25px;padding:10px" readonly>
+
+											</textarea>
+										</div>
+
+										<!--用户信息显示区域-->
+										<div id="tab6" class="tabson">
+											<!--实时动态显示 -->
+											<script>
+window.setInterval("userinfo()",700);
+											</script>
+											<li><p><b>用户信息<b></p></li>
+													<!--  把软件信息显示在文本框内  -->
+													<textarea id="user" rows="18" cols="73" margin="20px" style="border:solid 2px gray; border-radius:6px;background:#f0f9fd;margin-left:25px;padding:10px" readonly>
+
+													</textarea>
+												</div>
+
+											</div> 
+
+											<script type="text/javascript"> 
+$("#usual1 ul").idTabs(); 
+											</script>
+
+											<script type="text/javascript">
+$('.tablelist tbody tr:odd').addClass('odd');
+											</script>   
+										</div>    
+
+										</body>
+										</html>

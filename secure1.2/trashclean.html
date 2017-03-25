@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,height=device-height">
+<title>垃圾清理</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="js/select-ui.min.js"></script>
+<script type="text/javascript" src="editor/kindeditor.js"></script>  
+<script src="js/clean.js"></script>
+<script src="js/cleanall.js"></script>
+<style type="text/css">
+a{text-decoration: none;color:#515151;}
+body{font-family:'微软雅黑'; margin:0 auto;}
+ul{display:block;margin:5;list-style:none;}
+li{display:block;margin:5;padding:5;list-style: none;}
+/******    头部信息样式    ******/
+#header h2{color:#515151;}
+#header h2 span {font-size: 20px; color:gray;}
+
+.fT{position: relative;top:-10px;}
+
+/****   子功能导航标题bar   ****/
+#container ul li div{width:700px; position: relative; left:-38px; text-align:left;border:1px solid gray; background:#ECFFFF}
+#container ul li div span{font-size:20px; color:#99CCFF;}
+#container ul li div a{position:relative; top:-10px;color:#0080FF;}
+#container ul li div a:hover{filter:alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;}
+.clearArea {width:700px; position: relative; left:-40px; background:#EBEBEB}
+.clearArea span {font-size: 20px;}
+
+/***   按钮样式    ***/
+.button{width:100px;height:25px;border-radius:10px; height:35px; color:white;background:#1C86EE;}
+.button:hover{filter:alpha(opacity=90);
+	-moz-opacity:0.8;
+	-khtml-opacity: 0.5;
+	opacity: 0.8;}
+.tips{font-size:35px; color:red;}
+
+/*********  导航BAR     **********/
+.place{height:30px; font-size:18px;background:url(./images/righttop.gif) repeat-x;}
+.place span{line-height:40px; font-weight:bold;float:left; margin-left:10px;}
+.placeul li{float:left; line-height:40px; padding-left:5px; padding-right:12px; background:url(./images/rlist.gif) no-repeat right;}
+.placeul li:last-child{background:none;}
+/*     提示文字样式     */
+.tips{background:#C6E2FF;height:25px;color:black; text-align:center}
+.tips td{background: #EBEBEB;}
+.table{width:66%; margin:0 auto;}
+.usual{width:660px;}
+</style>
+</head>
+
+<body>
+<script src="js/info.js"></script>
+
+<!--  显示当前页面位置  -->
+<div class="place">
+	<span>位置：</span>
+	<ul class="placeul">
+		<li><a href="first/index.html">首页</a></li>  <!--  为"首页"设置连接为first/index.html(即点击跳转到首页)  -->
+		<li><a href="trashclean.html">垃圾清理</a></li> <!--  为"垃圾清理"设置链接为trashclean.html(即点击刷新) -->
+	</ul>
+</div>
+
+<div class="formbody" >
+
+
+	<div id="usual1" class="usual"> 
+
+		<div class="itab">
+			<ul> 
+				<li><a href="#tab1" class="selected">一键清理</a></li> <!--tab1一键清理 -->
+				<li><a href="#tab2">垃圾清理</a></li>  <!--tab2垃圾清理 -->
+				<li><a href="#tab3">firefox清理</a></li>  <!--tab3 firefox清理 -->
+			</ul>
+		</div> 
+
+		<!--一键清理 -->
+		<div style="margin-left:13px" id="tab1" class="tabson">
+			<!--  提示输入密码，并密文显示密码  -->
+			<p style="margin-top:0px;margin-left:30px;color:red">*请输入当前用户密码: <input style="width:140px;border:solid 2px gray; border-radius:5px;" type='password' id="passwd1" name='cPwd' class='input' /></p>
+			<div style="margin-left:26px;margin-top:-15px;padding-top:0px;padding-bottom:5px;width:600px;border-radius:20px;background:#C6E2FF;">
+
+				<p style="width:500px;font-size:31px;margin-left:50px;margin-bottom:15px;margin-top:35px;"><b>清理电脑中的Cookies、垃圾、缓存、痕迹、记录，只需一键。 </b><button class='button' type="button" onclick="cleanall()">一键清理</button></p>
+
+				<!--未清理前显示所有清理项，清理后显示清理结果信息 -->
+				<pre style="margin-left:45px;margin-top:-5px;padding-left:120px;font-size:15px;padding-top:0px;" id="cleanall">
+ -清理缩略图缓存
+ -清理flash cookies
+ -清理最近使用文档记录
+ -清理firefox密码
+ -清理firefox的cookies
+ -清理firefox的会话恢复
+ -清理firefox的表单历史
+ -清理firefox的URL历史
+ -清理firefox的站点首选项
+ -清空回收站
+ -清理孤立包
+ -清理所有软件缓存
+ -清理旧版本的软件缓存
+ -删除系统不再使用的孤立软件
+				</pre>
+
+			</div>
+		</div>
+
+
+		<!--垃圾清理 -->
+		<div id="tab2" class="tabson">
+			<div id='container'>
+
+				<!--  提示输入密码，并密文显示密码  -->
+				<p style="margin-top:20px;margin-left:26px;color:red">*请输入当前用户密码: <input style="width:140px;border:solid 2px gray; border-radius:5px;" type='password' id="passwd2" name='cPwd' class='input' /></p>
+
+				<div id='setting'>
+					<!--   子功能列表  -->
+					<!--   设置表格样式  -->
+					<table border="1" class='table' style="margin-top:-5px;margin-left:15px;width:640px; border:2px solid white;">
+
+						<tr>
+
+							<td class='tips'><b>清除缩略图缓存</b></td><td style='background:#EBEBEB;'>
+								<!--一键清理按钮，点击可调用cleanpng()函数进行相关清理操作-->
+								<input type="button" value="一键清理" class='button' onclick="cleanpng()"/>
+								<!--显示清理成功与否的提示-->
+								<ins id="cleanpng"></ins></td>
+						</tr>
+
+						<tr>
+							<td class='tips'><b>清除flash_cookies</b></td><td style='background:#EBEBEB'>
+								<!--一键清理按钮，点击可调用cleanfc()函数进行相关清理操作-->
+								<input type="button" value="一键清理" class='button' onclick="cleanfc()"/>
+								<!--显示清理成功与否的提示-->
+								<ins id="cleanfc"></ins></td>
+						</tr>
+
+						<tr>
+
+							<td class='tips'><b>清除最近使用文档记录</b></td><td style='background:#EBEBEB'>
+								<!--一键清理按钮，点击可调用cleanrecent()函数进行相关清理操作-->
+								<input type="button" value="一键清理" class='button' onclick="cleanrecent()"/>
+								<!--显示清理成功与否的提示-->
+								<ins id="cleanrecent"></ins></td>
+						</tr>
+						<tr>
+							<td class='tips'><b>清空回收站</b></td><td style='background:#EBEBEB'>
+								<!--一键清理按钮，点击可调用cleanbin()函数进行相关清理操作-->
+								<input type="button" class='button' value="一键清空" onclick="cleanbin()"/>
+								<!--显示清理成功与否的提示-->
+								<ins id="cleanbin"></ins></td>
+						</tr>
+						<tr>
+							<td class='tips'><b>清理孤立包</b></td><td style='background:#EBEBEB'>
+								<!--一键清理按钮，点击可调用cleanpag()函数进行相关清理操作-->
+								<input type="button" class='button' value="一键清理" onclick="cleanpag()"/>
+								<!--显示清理成功与否的提示-->
+								<ins id="cleanpag"></ins></td>
+						</tr>
+						<tr>
+							<td class='tips'><b>清理所有软件缓存</b></td><td style='background:#EBEBEB'>
+								<!--一键清理按钮，点击可调用clean()函数进行相关清理操作-->
+								<input type="button"  class='button' value="一键清理" onclick="clean()"/>
+								<!--显示清理成功与否的提示-->
+								<ins id="clean"></ins>
+							</td>
+						</tr>
+
+						<tr>
+							<td class='tips' width='330'><b>清理旧版本软件缓存</b></td>
+							<td style='background:#EBEBEB'>
+								<!--一键清理按钮，点击可调用autoclean()函数进行相关清理操作-->
+								<input type="button" class='button' value="一键清理" onclick="autoclean()"/>
+								<!--显示清理成功与否的提示-->			
+								<ins id="autoclean"></ins>
+							</td>
+						</tr>
+						<tr>
+							<td class='tips'>
+								<b>删除系统不再使用的孤立软件</b>
+							</td>
+							<td style='background:#EBEBEB'>
+								<!--一键清理按钮，点击可调用autoremove()函数进行相关清理操作-->
+								<input type="button" class='button' value="一键清理" onclick="autoremove()"/>
+								<!--显示清理成功与否的提示-->
+								<ins id="autoremove"></ins>
+							</td>
+						</tr>
+					</table><!--END-->
+				</div>
+			</div>  
+		</div> 
+
+
+		<!--  firefox清理  -->
+		<div id="tab3" class="tabson">
+
+			<!--   设置表格样式  -->
+			<table border="1" class='table' style="margin-top:80px;margin-left:20px;width:640px; border:2px solid white;border-radius:10px;">
+				<tr>
+					<td class='tips'><b>清除密码</b></td><td style='background:#EBEBEB'>
+						<!--一键清理按钮，点击可调用clsffpasswd()函数进行相关清理操作-->
+						<input type="button" class='button' value="一键清理" onclick="clsffpasswd()"/>
+						<!--显示清理成功与否的提示-->
+						<ins id="clsffpasswd"></ins></td>
+				</tr>
+				<tr>
+					<td class='tips' width='330'>
+						<b>清理cookies</b>
+					</td>
+					<td style='background:#EBEBEB'>
+						<!--一键清理按钮，点击可调用clsffcookies()函数进行相关清理操作-->
+						<input type="button" class='button' value="一键清理" onclick="clsffcookies()"/>
+						<!--显示清理成功与否的提示-->
+						<ins id="clsffcookies"></ins>
+					</td>
+				</tr>
+
+
+
+				<tr>
+					<td class='tips'>
+						<b>清除会话恢复</b>
+					</td>
+					<td style='background:#EBEBEB'>
+						<!--一键清理按钮，点击可调用clsffsess()函数进行相关清理操作-->
+						<input type="button" class='button' value="一键清理" onclick="clsffsess()"/>
+						<!--显示清理成功与否的提示-->			
+						<ins id="clsffsess"></ins>
+					</td>
+				</tr>
+
+				<tr>
+
+					<td class='tips'><b>清除表单历史</b></td><td style='background:#EBEBEB'>
+						<!--一键清理按钮，点击可调用clsfffmhistory()函数进行相关清理操作-->
+						<input type="button" value="一键清理" class='button' onclick="clsfffmhistory()"/>
+						<!--显示清理成功与否的提示-->		
+						<ins id="clsfffmhistory"></ins></td>
+				</tr>
+				<tr>
+					<td class='tips'>
+						<b>清理URL历史</b>
+					</td>
+					<td style='background:#EBEBEB'>
+						<!--一键清理按钮，点击可调用clsffURL()函数进行相关清理操作-->
+						<input type="button"  class='button' value="一键清理" onclick="clsffURL()"/>
+						<!--显示清理成功与否的提示-->			
+						<ins id="clsffURL"></ins>
+					</td>
+				</tr>
+				<tr>
+					<td class='tips'><b>清除站点首选项</b></td><td style='background:#EBEBEB'>
+						<!--一键清理按钮，点击可调用clsffcprefs()函数进行相关清理操作-->
+						<input type="button" class='button' value="一键清空" onclick="clsffcprefs()"/>
+						<!--显示清理成功与否的提示-->		
+						<ins id="clsffcprefs"></ins></td>
+				</tr>
+
+			</table><!--END-->
+		</div>
+	</div>
+</div>
+<script type="text/javascript"> 
+$("#usual1 ul").idTabs(); 
+</script>
+
+<script type="text/javascript">
+$('.tablelist tbody tr:odd').addClass('odd');
+</script>   
+</div>    
+
+</body>
+</html>

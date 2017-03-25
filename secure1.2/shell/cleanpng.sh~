@@ -1,0 +1,8 @@
+#!/bin/bash
+#删除缩略图缓存
+rm ~/.cache/thumbnails/*/*.png
+if [ $? == 0 ];then
+	echo "缩略图缓存删除成功！"
+else
+	echo "所有缩略图缓存已删除！"
+fi

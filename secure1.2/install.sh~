@@ -1,0 +1,10 @@
+#########################################################################
+# File Name: install.sh
+# Author: liujing
+# mail: 2510034575@qq.com
+# Created Time: 2014年08月16日 星期六 09时56分59秒
+#########################################################################
+#!/bin/bash
+zip app.nw index.html package.json
+chmod 777 nw
+./nw app.nw

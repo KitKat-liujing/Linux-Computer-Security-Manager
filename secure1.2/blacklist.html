@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,height=device-height">
+<title>病毒查杀</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+
+<script src="js/blacklist.js"></script>
+<style type="text/css">
+  /*        基本样式      */
+  h1{font-family: '微软雅黑'; color:#0080FF;}
+  h1 span{font-size: 15px;color:#515151;}
+  h3{font-family: '微软雅黑';color:#0080FF; width:600px; height:30px; line-height: 40px;font-size:18px; background:#EBEBEB;margin-left:30px;text-align:center;}
+
+  .tips{height:10px;width:150px;border-radius:10px; background:#46A3FF; color:#FFF; text-align: center; margin:5px}
+  .btn{width:100px; height:30px; border-radius:8px; background:#515151;color:#FFF;}
+  .btn:hover{filter:alpha(opacity=90);-moz-opacity:0.8;-khtml-opacity: 0.5; opacity: 0.8;}
+  .input{width:200px; height:20px; border-ra== dius:8px;}
+  .table{border-radius:5px; padding: 8px; position: relative; left:50px;}
+  .usual{width:680px;}
+</style>
+</head>
+ <body>
+	<!--页面标签导航-->
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="first/index.html">首页</a></li>
+    <li><a href="blacklist.html">黑名单</a></li>
+    </ul>
+    </div>
+
+ <div id="usual1" class="usual"> 
+    <!--页面分栏-->
+    <div class="itab">
+  	<ul> 
+    <li><a href="#tab1" class="selected">加入黑名单</a></li> 
+    <li><a href="#tab2">移除黑名单</a></li> 
+  	</ul>
+    </div> 
+<!--第一个页面-->
+<div id="tab1" class="tabson">
+<div id ='normal'>
+   <h3>普通用户名单</h3>
+<!--普通用户名输出框-->
+   <textarea id="res" class='area' rows="9" cols="50" style="margin-left:120px;border:solid 2px gray; border-radius:6px;" readonly ></textarea>
+</div>
+
+<!--     黑名单     -->
+<div id='blackList'>
+   <h3>加入黑名单</h3>
+   <div class='add'>
+    <table class='table' style="margin-left:100px">
+ 	   <tr>
+ 	   	  <td class='tips'><b>当前用户密码</b></td>
+		  <!--密码输入框-->
+ 	   	  <td><input style="width:200px;border:solid 2px gray; border-radius:5px;" type='password' class='input' id='passwd' name='passwd' /></td>
+ 	   </tr>
+ 	   <tr>
+ 	   	 <td class='tips'><b>用户名</b></td>
+		 <!--用户名输入框-->
+ 	   	 <td><input style="width:200px;border:solid 2px gray; border-radius:5px;" type="text" class='input' id="user" name="user"></td>
+ 	   </tr>
+ 	   <tr>
+ 	   	   <td colspan='2' align='center'>
+		<!--加入黑名单按钮，触发加入黑名单事件-->
+ 	      	 <input type="button" class='btn' id="recover" value="加入黑名单" onclick="Add_blackuser()">
+		 <p id="res1"></p>
+ 	      </td>
+ 	   </tr>
+ 	  	
+    </table>
+   </div>
+</div>
+</div>
+<!--第二个页面-->
+<div id="tab2" class="tabson">
+ <h3>已加入黑名单用户</h3>
+<div class='area' style="margin-left:120px">
+<!--黑名单用户输出框-->	
+ <textarea id="res2" class='area' rows="6" cols="50" margin="10px" style="margin-left:25px;border:solid 2px gray; border-radius:6px;" readonly ></textarea></div><br>
+   <!--    已加入黑名单   -->
+   <table  style="width:600px;height:50px;text-valign:center;margin-left:150px">
+  
+  
+ 	    <tr>
+ 	   	  <td class='tips'><b>当前用户密码</b></td>
+		<!--密码输入框-->
+ 	   	  <td><input style="width:200px;border:solid 2px gray; border-radius:5px;" type='password' id="passwd1" class='input' name="passwd1" /></td>
+ 	    </tr>
+ 	    <tr>
+ 	   	   <td class='tips' width='20px'><b>用户名</b></td>
+			<!--用户名输入框-->
+ 	   	   <td><input style="width:200px;border:solid 2px gray; border-radius:5px;" type="text" class='input' id="re_user" name="re_user" /></td>
+ 	    </tr>
+ 	    <tr>
+ 	      <td colspan='2' align='center'>
+		<!--移出黑名单按钮，触发移出事件-->
+ 	      <input type="button" class='btn' id="recover" value="移出黑名单" onclick="Del_blackuser()">
+		
+ 	      </td>
+ 	    </tr>
+ 	   
+	<tr>
+ 	   	  <td class='tips' width='20px'><b>当前用户密码</b></td>
+			<!--密码输入框-->
+ 	   	  <td><input style="width:200px;border:solid 2px gray; border-radius:5px;" type="password" class='input' id="passwd2" name="passwd2"></td>
+ 	    </tr>
+ 	    <tr>
+ 	   	   <td class='tips' width='20px'><b>用户名</b></td>
+		<!--用户名输入框-->
+ 	   	   <td><input style="width:200px;border:solid 2px gray; border-radius:5px;" type="text" id="kil_user"  class='input' name="kil_user"></td>
+ 	    </tr>
+ 	    <tr>
+ 	      <td colspan='2' align='center'>
+		<!--删除黑名单按钮，触发删除用户事件-->
+ 	      	 <input type="button" class='btn' id="delete" value="删除黑名单" onclick="kill_blackuser()">
+ 	      </td>
+ 	    </tr>
+ 	    <tr>
+ 	    	<td colspan='2' align='center'><p id="res3"></p></td>
+ 	    </tr></div>
+
+</tr>
+      </table>
+    
+
+</div>
+<!--每700s刷新一次页面，实时更新显示信息-->
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+       window.setInterval("Get_user()",700);
+        window.setInterval("New_blackuser()",700);
+</script>
+</div>
+ </body>
+ </html>

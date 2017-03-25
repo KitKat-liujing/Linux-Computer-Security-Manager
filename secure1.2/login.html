@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>欢迎帐号登录界面</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="js/jquery.js"></script>
+<script src="js/cloud.js" type="text/javascript"></script>
+
+<script language="javascript">
+	$(function(){
+    $('.loginbox').css({'position':'absolute','left':($(window).width()-692)/2});
+	$(window).resize(function(){  
+    $('.loginbox').css({'position':'absolute','left':($(window).width()-692)/2});
+    })  
+});  
+</script> 
+
+<script src="js/login.js"></script>
+
+</head>
+
+<body style="background-color:#1c77ac; background-image:url(images/light.png); background-repeat:no-repeat; background-position:center top; overflow:hidden;">
+
+
+
+    <div id="mainBody">
+      <div id="cloud1" class="cloud"></div>
+      <div id="cloud2" class="cloud"></div>
+    </div>  
+
+
+<div class="logintop">    
+    <span>欢迎帐号登录界面</span>    
+    <ul>
+    <!--回首页连接到首页-->
+    <li><a href="main.html">回首页</a></li>
+    
+    </ul>    
+    </div>
+    
+    <div class="loginbody">
+    
+    <span class="systemlogo"></span> 
+       
+    <div class="loginbox">
+    
+    <ul>
+    <!--用户名输入框，placeholder="用户名"占位信息，提示用户输入格式-->
+    <li><input  type="text" class="loginuser" id="username" placeholder="用户名"  /></li>
+    <!--密码输入框-->
+    <li><input  type="password" class="loginpwd"  id="pwd" placeholder="密码"/></li>
+    <!--运行结果输出位置-->
+    <li><p id="statePG"></p></li>
+    <!--登陆按钮，触发登陆事件;注册按钮，触发弹出页面事件-->
+    <li><input  type="button" class="loginbtn" value="登录"  onclick="login()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input  type="button" class="loginbtn" value="注册"  onclick="openwin2()"  /></li>
+    <!--复选框选择是否记住密码-->
+    <li><label><input type="checkbox"  checked="checked" />记住密码</label><label><a href="">忘记密码？</a></label></li>  
+    </ul>  
+    
+    </div>
+    
+    </div>
+    
+
+
+</body>
+</html>

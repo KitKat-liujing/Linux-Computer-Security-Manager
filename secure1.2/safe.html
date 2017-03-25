@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<meta charset="utf-8"/>
+<head>
+<meta name="viewport" content="width=device-width,height=device-height">
+<script src="js/safe.js"></script>
+<title>安全保险箱</title>
+<link rel="stylesheet" type="text/css" href="css/topNav.css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="js/select-ui.min.js"></script>
+<script type="text/javascript" src="editor/kindeditor.js"></script>
+<script>
+    window.setInterval("cat()",700);
+</script>
+<style type="text/css">
+/*        标题样式         */
+h3{font-size: 20px;color:#0080FF;width:600px; border-radius:5px; line-height:40px;background:#EBEBEB; height:40px; font-family: '微软雅黑';margin:20px 20px 0 50px}
+h3 span{font-size: 18px; color:#515151;}
+p span{font-size: 18px;font-family:'微软雅黑';color:#515151;}
+#single{width:700px; margin-top:0px}
+#document{width:700px; margin-top:0px}
+/*        提示样式        */
+.tips{background:#FFFFCE; width:600px; height:40px; border-radius:5px; font-family: '微软雅黑';font-size:16px; line-height: 40px; margin:0 50px 0 50px}
+/*        按钮样式         */
+  .button{font-size:18px;width:150px;height:35px;border-radius:10px;color:#000;background:#F0F8FF;margin-top:20px}
+/*       文件选择样式      */
+.file{font-size:18px}
+/*        内容框样式       */
+#safe{width:700px; margin-top:0px}
+.in{width:700px; margin-top:0px}
+.out{width:700px; margin-top:0px}
+.usual{width:700px;}
+/*        居中显示　　　　*/ 
+body{text-align:center} 
+</style> 
+</head>
+
+<body>
+    <!--  显示当前位置  -->
+    <div class="place">
+       <span>位置：</span>
+        <ul class="placeul">
+          <!--  为"首页"设置链接为first.html(即点击跳转到首页)  -->
+          <li><a href="first/index.html">首页</a></li>
+	  <!--  为"资料保护"设置链接为safe.html(即点击刷新)  -->
+          <li><a href="safe.html">资料保护</a></li>
+        </ul>
+    </div>
+
+    <!--  设置3个标签页  -->
+    <div id="usual1" class="usual"> 
+    <div class="itab">
+       <ul> 
+		  <!--  标签页1为"保险箱内的文件"  -->
+          <li><a href="#tab1">保险箱内的文件</a></li> 
+		  <!--  标签页2为"文件保护"  -->
+          <li><a href="#tab2">文件保护</a></li> 
+		  <!--  标签页3为"文件夹保护"  -->
+          <li><a href="#tab3">文件夹保护</a></li>
+       </ul>
+    </div> 
+        
+	    <!--  标签页1  -->
+　　　　<div id="tab1">
+          
+	    <!--  提示输入密码，并密文显示密码  -->
+　　　　<p style="font-size:17px;margin:0;color:red">*请输入当前用户密码:<input style="width:160px;height:20px;border:solid 2px gray; border-radius:5px;" type="password" id="passwd"></p>
+　　　　<div id='safe'>
+          <h3>&nbsp;保险箱内的文件</h3>
+		  <!--  打印提示信息，并调用safe.js中的cat()函数(用于实时显示安全日志中的内容)  -->
+          <p class='tips'><font size='2'></font>
+保险箱内的文件如下,后面对文件/文件夹的操作，这里都会实时更新呦~</p>  
+		  <!--  在文本框中显示安全之日中的内容  -->
+		  <textarea id="cat" rows="10" cols="72"  style="border:solid 2px gray; border-radius:10px;margin:30px" readonly>
+          </textarea>
+        </div>
+    </div>
+
+    <!--  标签页2  -->
+    <div id="tab2">
+    <!--  对于单个文件的操作  -->
+    <div id='single'>
+
+	<!--  加入保险箱  -->
+        <div class='in'>
+          <h3>文件放入保险箱</h3>
+		  <!--  打印出提示信息  -->
+		  <p class='tips'><font color='red' size='2'></font>请选择需要放入保险箱的文件</p>
+                  <!--  设置点击选择文件  -->
+		  <input type="file" class='file' name="文件" id="safeid1" />
+		  <!--  设置点击"放入保险箱"按钮，调用safe.js中的safebox1()函数(用于将单个文件放入保险箱)  -->
+　　　               <button type="button" class='button' onclick="safebox1()">放入保险箱</button>
+                  <!--  打印结果  -->
+                  <p id="safe1"></p>
+　　   　　 </div>
+
+		<!--  绘制分隔符  -->
+		<hr style="border:1px dashed #ccc; width:690px;margin-left:10px"/>
+
+		<!--  移出保险箱  -->
+        <div class='out'>
+          <h3>文件移出保险箱</h3>
+		  <!--  打印出提示信息  -->
+		  <p class='tips'><font size='2'></font>请选择需要移出保险箱的文件</p>
+                  <!--  设置点击选择文件  -->
+		  <input type="file" class='file' id="unsafeid1"/>
+		  <!--  设置点击"移出保险箱"按钮，调用safe.js中的unsafebox1()函数(用于将单个文件移出保险箱)  -->
+　　　               <button type="button" class='button' onclick="unsafebox1()">移出保险箱</button>
+                  <!--  打印结果  -->
+                  <p id="unsafe1"></p>
+　　　   　</div>
+     </div>
+     </div>
+     
+	 <!--  标签页3  -->
+     <div id="tab3">
+     <!--  对文件夹的操作  -->
+     <div id='document'>
+		<!--  放入保险箱  -->
+        <div class='in'>
+          <h3>文件夹放入保险箱</h3>
+		  <!--  打印出提示信息  -->
+          <p class='tips'><font color='red' size='2'></font>请输入需要放入保险箱的文件夹</p>
+		  <!--  设置文本框，用来输入路径/文件夹名  -->
+		  <input style="width:180px;height:25px;border:solid 2px gray; border-radius:5px;" type="test" name="文件夹" id="safeid2"/>
+		  <!--  设置点击"放入保险箱"按钮，调用safe.js中的safebox2()函数(用于将文件夹放入保险箱)  -->
+		  <button type="button" class='button' onclick="safebox2()">放入保险箱</button>
+		  <!--  打印结果  -->
+		  <p id="safe2"></p>
+　　    </div>
+
+        <!--  绘制分隔符  -->
+        <hr style="border:1px dashed #ccc; width:690px;margin-left:10px"/>
+
+		<!--  移出保险箱  -->
+        <div class='out'>
+          <h3>文件夹移出保险箱</h3>
+          <!--  打印出提示信息  -->
+		  <p class='tips'><font color='red' size='2'></font>请输入需要移出保险箱的文件夹</p>
+		  <!--  设置文本框，用来输入路径/文件名  -->
+		  <input style="width:180px;height:25px;border:solid 2px gray; border-radius:5px;" type="test" name="文件夹" id="unsafeid2"/>
+		  <!--  设置点击"移出保险箱"按钮，调用safe.js中的unsafebox2()函数(用来将文件夹移出保险箱)  -->
+          <button type="button" class='button' onclick="unsafebox2()">移出保险箱</button>
+		  <!--  打印结果  -->
+		  <p id="unsafe2"></p>
+　　　  </div>
+     </div>
+     </div>
+     
+    <script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+#!/bin/bash
+echo $1 | sudo -S ufw allow $2 > /dev/null
+if [ $? -eq 0 ]
+then	
+	echo "允许外部访问本机端口：$2"
+elif [ $2 -le 65535 -a $2 -ge 1 ]
+	then
+		echo "密码输入错误"
+else
+	echo "请输入0～65535的端口号"
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

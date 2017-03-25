@@ -1,0 +1,9 @@
+#清除最近使用文档记录
+#!/bin/bash
+rm ~/.local/share/recently-used.xbel
+if [ $? == 0 ]; then
+	echo "最近使用文档记录删除成功！"
+else
+	echo "最近使用文档记录已删除！"
+fi
+

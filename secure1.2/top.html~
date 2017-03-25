@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Linux电脑管家</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="js/jquery.js"></script>
+<script src="js/top.js"></script>
+<script type="text/javascript">
+$(function(){	
+	//顶部导航切换
+	$(".nav li a").click(function(){
+		$(".nav li a.selected").removeClass("selected")
+		$(this).addClass("selected");
+	})	
+})	
+</script>
+<style type="text/css">
+   body{width:1100px;}
+</style>
+</head>
+
+<body style="background:url(images/topbg.gif) repeat-x;">
+  <div id='container'>
+    <div class="topleft">
+    <a href="main.html" target="_parent"><img src="images/logo.png" title="系统首页" /></a>
+    </div>
+        
+    <ul class="nav">
+    <li><a href="first/index.html" target="rightFrame" class="selected"><img src="images/home.png" width=45 height=45 title="首页" /><h2>首页</h2></a></li>
+<!--一键体检建立链接-->
+    <li><a href="examin.html" target="rightFrame"><img src="images/tj.png" width=45 height=45 title="首页" /><h2>一键体检</h2></a></li>
+<!--垃圾清理建立链接-->
+    <li><a href="trashclean.html" target="rightFrame"><img src="images/icon02.png" width=45 height=45 title="垃圾清理" /><h2>垃圾清理</h2></a></li>
+<!--加速优化建立链接-->
+    <li><a href="quick.html"  target="rightFrame"><img src="images/icon03.png" width=45 height=45 title="加速优化" /><h2>加速优化</h2></a></li>
+<!--病毒查杀建立链接-->
+    <li><a href="kill_virus.html"  target="rightFrame"><img src="images/icon04.png" width=45 height=45 title="病毒查杀" /><h2>病毒查杀</h2></a></li>
+<!--防火墙建立链接-->
+    <li><a href="fireWall.html" target="rightFrame"><img src="images/icon05.png" width=45 height=45 title="防火墙" /><h2>防火墙</h2></a></li>
+    </ul>          
+    <div class="topright">    
+   <ul>
+<!--帮助和登陆链接-->
+    <button type="button" onclick="openhelp()" style="background:#0066FF;margin-top:5px">帮助</button>
+   <li><a href="login.html" target="_parent">登陆</a><li>
+  </ul>
+     
+    <div class="user">
+    </div>    
+    
+    </div>
+
+</div>
+</body>
+</html>

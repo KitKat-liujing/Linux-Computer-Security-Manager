@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,height=device-height">
+<title>无标题文档</title>
+<!-- <link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/select.css" rel="stylesheet" type="text/css" /> -->
+<link rel="stylesheet" type="text/css" href="css/topNav.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="js/select-ui.min.js"></script>
+<script type="text/javascript" src="editor/kindeditor.js"></script>
+
+<style type="text/css">
+/**     基本内容布局     **/
+h2,h3{font-family: '微软雅黑';color:#0080FF;}
+h2 span{font-size: 14px;color:#515151;}
+a{text-decoration: none;color:#0080FF;}  
+
+/*    防火墙端口输入框  */ 
+.port{width:100px; height:20px; border-radius:5px;} 
+
+/*     提示文字样式    */ 
+.tips{background:#1C86EE;height:30px;color:#FFF; text-align:center}
+.tips td{background: #EBEBEB}
+/*     防火墙设置内容样式   */
+.table{width:80%; margin:0 auto;}
+</style>
+
+</head>
+
+<!--	body	-->
+<body>
+<!-- 设置标题栏-->
+<div class="place">
+	<span>位置：</span>
+	<ul class="placeul" >
+		<li><a href="first/index.html" style="font-size:14px;color:black">首页</a></li>
+		<li><a href="fireWall.html" style="font-size:14px;color:black">防火墙</a></li>
+	</ul>
+</div>
+<div id='container'>
+	<!-- 基本设置  -->
+	<div id='fireWall'>
+		<script src="js/firewall.js"></script>
+		<h3 style="margin-left:65px;margin-top:30px">&nbsp;基本设置</h3>
+		<!--密码栏设置-->
+		<p style="margin-left:70px;color:red"><span>*请输入当前用户密码: </span><input style="width:140px;border:solid 2px gray; border-radius:5px;" type='password' name='sPwd' id="passwd"/></p>
+		<div id='setting'>
+			<!--设置表格-->
+			<table class='table'>
+				<tr>
+					<!--防火墙状态-->
+					<td class='tips' width='50%' ><b>防火墙状态</b></td>
+					<!--设置背景色-->
+					<td style='background:#EBEBEB'>
+						<!--开启和关闭按钮-->
+						<input style="border-radius:5px;background:#FFFACD" type='button' name='fStatus[]' value='开启' onclick="ufw_open()"/>
+						<input style="border-radius:5px;background:#FFFACD" type='button' name='fStatus[]'  value='关闭' onclick="ufw_close()"/>
+						<ins id="status"></ins>
+					</td>
+				</tr>
+				<tr>
+					<!--外部访问smtp服务-->
+					<td class='tips'><b>外部访问SMTP服务</b></td>
+					<!--设置背景色-->
+					<td style='background:#EBEBEB'>
+						<!--开启和关闭按钮-->
+						<input style="border-radius:5px;background:#FFFACD" type='button' name='smtp[]' value='开启' onclick="ufw_smtp_open()"/>
+						<input style="border-radius:5px;background:#FFFACD" type='button' name='smtp[]'  value='关闭' onclick="ufw_smtp_close()"/>
+						<ins id="smtp_status"></ins>
+					</td>
+				</tr>
+				<tr>
+					<!--外部访问http服务-->
+					<td class='tips'><b>外部访问HTTP服务</b></td>
+					<!--设置背景色-->
+					<td style='background:#EBEBEB'>
+						<!--开启和关闭按钮-->
+						<input style="border-radius:5px;background:#FFFACD" type='button' name='http[]' value='开启' onclick="ufw_http_open()"/>
+						<input style="border-radius:5px;background:#FFFACD" type='button' name='http[]' value='关闭' onclick="ufw_http_close()"/>
+						<ins id="http_status"></ins>
+					</td>
+				</tr>
+				<tr>
+					<!--外部访问本机端口-->
+					<td class='tips'><b>外部访问本机端口</b>&nbsp;<input type='text' class='port' name='port' id="port_id"/></td>
+					<!--设置背景色-->
+					<td style='background:#EBEBEB'>
+						<!--开启和关闭按钮-->
+						<input style="border-radius:5px;background:#FFFACD" type='button' name='port[]' value='开启' onclick="ufw_port_open()"/>
+						<input style="border-radius:5px;background:#FFFACD" type='button' name='port[]' value='关闭' onclick="ufw_port_close()"/>
+						<ins id="port_status"></ins>
+					</td>
+				</tr>
+			</table>
+		</div><!--END-->
+		<!-- <hr style="border:1px dashed #ccc;"/>-->
+		<!--  ARP防火墙状态 -->
+		<div id='fireWall-status'>
+			<script src="js/arp_firewall.js"></script>
+			<h3 style="margin-left:70px;margin-top:50px">ARP防火墙</h3>
+
+			<table class='table'>
+				<tr>
+					<td class='tips' width='50%'><b>ARP防火墙状态</b></td>
+					<!--设置背景色-->
+					<td style='background:#EBEBEB'>
+						<!--开启和关闭按钮-->
+						<input style="border-radius:5px;background:#FFFACD" type='button' name='fire[]' value='开启' onclick="arp_open()" > 
+						<input style="border-radius:5px;background:#FFFACD" type='button' name='fire[]' value='关闭' onclick="arp_close()">
+						<ins id="arp_status"></ins>
+					</td>
+				</tr>
+			</table>
+		</div><!--END-->
+	</div>
+</div>
+</body>
+</html>

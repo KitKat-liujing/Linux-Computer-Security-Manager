@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta Content-type='text/html'  charset="UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height">
+<title>进程管理</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script src="js/Node.js"></script>
+<script src="js/kill_PG.js"></script>
+<style type="text/css">
+a{text-decoration: none;color:#615151;}
+body{font-family:'微软雅黑'; margin:0 auto;}
+ul{display:block;margin:0;list-style:none;}
+li{display:block;margin:0;padding:0;list-style: none;}
+/***         标题样式      ****/
+h3{font-family:'微软雅黑'; color:#FFF;}
+#topTitle h2{color:#0080FF; font-family:'微软雅黑';}
+#topTitle h2 span{font-size: 13px;color:#515151;}
+
+/***    启动项管理模块     ***/
+#qidong{width:660px;height:400px;border-radius:5px; background:#F0F9FD;border:2px solid gray; margin-top:20px;}
+.table{margin:0 auto;position:relative;top:-5px;border-radius:5px; border:1px solid gray;}
+
+/*****      标题空格区域       ****/
+.space{width:1px;background:blue;}
+/*****    安装选项卡          *****/
+#install{width:655px;background:#C4E1FF; border-radius:8px;border:2px solid gray;margin:2px;}
+.wrap {
+	width:655px; position:relative;top:-2px; margin:0 auto;border: #b7c5d9 2px solid;background: #f0f6f9
+}
+.a10 {
+	FONT-WEIGHT: bold; COLOR: #0099cc;  TEXT-DECORATION: none;
+}
+.a10:hover {
+	COLOR: #bb2233; TEXT-DECORATION: underline
+}
+.md-head {
+	PADDING-LEFT: 0px; LINE-HEIGHT: 10px; HEIGHT: 10px
+}
+.md-head A {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 1px; FLOAT: left; BORDER-BOTTOM-WIDTH: 1px; MARGIN-LEFT: -1px; WIDTH: 426px; BACKGROUND-COLOR: #fff; TEXT-ALIGN: center; BORDER-RIGHT-WIDTH: 0px
+}
+.md-head A.wid {
+	WIDTH: 400px
+}
+.md-head A.cur {
+	BORDER-BOTTOM-WIDTH: 0px; COLOR: #000; BACKGROUND-COLOR: #f0f6f9; TEXT-DECORATION: none
+}
+.md-body {
+	padding:2px;ZOOM: 1
+}
+a,area { blr:e-xpression(this.onFocus=this.blur()) }
+:focus { -moz-outline-style: none; }
+
+/************    推荐模块布局        *************/
+#tuijian{width:640px;background:#C4E1FF; border-radius:3px; border:2px solid gray; margin:10px ;}
+
+
+/***********          按钮样式        *************/
+.button{width:80px; height:30px; border-radius:10px; margin-left:20px; border:2px solid gray;background:#1C86EE;color:#FFF;}
+.button:hover{filter:alpha(opacity=90);
+	-moz-opacity:0.8;
+	-khtml-opacity: 0.5;
+	opacity: 0.8;}
+/***********       头部导航BAR     ***************/
+.place{height:30px; font-size:13px; background:url(./images/righttop.gif) repeat-x;}
+.place span{line-height:30px; font-weight:bold;float:left; margin-left:12px;}
+.placeul li{float:left; line-height:10px; padding-left:7px; padding-right:12px; background:url(./images/rlist.gif) no-repeat right;}
+.placeul li:last-child{background:none;}
+</style>
+</head>
+
+<body>
+<!--页面标签导航-->
+<div class="place">
+	<span>位置：</span>
+	<ul class="placeul" style="padding-top:10px;">
+		<li><a href="first.html">首页</a></li>
+		<li><a href="#">进程管理</a></li>
+	</ul>
+</div>
+
+<div class="formbody">
+	<div id="usual1" class="usual"> 
+		 
+		<!--  主容器  -->
+		<div id='container'>
+			<div id='qidong'>
+
+				<div class="tabson">
+					<table class="table">
+						<tr>
+				<!--提示用户输出框的内容-->
+							<td width='50%'><input style="border-radius:5px;background:#FFFACD" type="button" value="当前用户进程"/></td>
+							<td><input style="border-radius:5px;background:#FFFACD" type="button" value="root用户进程" /></td>
+						</tr>
+						<tr>
+				<!--当前用户进程信息输出框-->
+							<td><textarea id="result" rows="15" cols="37" margin="1px" style="border:solid 1px gray; border-radius:5px;" readonly></textarea>
+							</td>
+				<!--root用户进程输出框-->
+							<td><textarea id="result2" rows="15" cols="37" margin="1px" style="border:solid 1px gray; border-radius:5px;" readonly></textarea>
+								
+							</td>
+						</tr>
+						<tr>
+
+							<td>
+				<!--进程号输入框，按钮触发杀死进程事件-->
+								<form action="form_action.asp" method="get">
+									<table><p>关闭的进程号: <input style="width:100px;border:solid 2px gray; border-radius:5px;" type="text" name="fname" id="btnPG" ><input style="border-radius:5px;background:#FFFACD"" type="button" value="关闭" onclick="kill_PG()"></table>
+								</form>
+							</td>
+				<!--进程名输入框，按钮触发杀死进程事件-->
+							<td>
+								<form action="form_action.asp" method="get">
+									<table><p>关闭的进程名: <input style="width:100px;border:solid 2px gray; border-radius:5px;" type="text" name="fname"  id="btnPG1" ><input style="border-radius:5px;background:#FFFACD"" type="button" value="关闭" onclick="killall_PG()"></table>
+								</form>
+							</td>
+
+						</tr>
+						
+
+					</table>
+<p id="statePG" style="text-align:center;"></p>
+				</div>
+
+			</div>
+		</div>
+
+
+
+			<script type="text/javascript"> 
+$("#usual1 ul").idTabs(); 
+			</script>
+<!--每700s刷新页面，实时显示进程信息-->
+<script type='text/javascript'>
+window.setInterval("progress_JK()",700);
+window.setInterval("progress2_JK()",700);
+</script>
+
+		</div>
+		</body>
+		</html>

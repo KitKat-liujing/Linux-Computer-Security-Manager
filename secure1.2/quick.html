@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta Content-type='text/html'  charset="UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height">
+<title>加速优化</title>
+<link rel="stylesheet" type="text/css" href="css/topNav.css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="js/select-ui.min.js"></script>
+<script type="text/javascript" src="editor/kindeditor.js"></script>  
+<script src="js/quick.js"></script>
+<script src="js/quicktool.js"></script>
+<style type="text/css">
+a{text-decoration: none;color:#615151;}
+body{font-family:'微软雅黑'; margin:0 auto;}
+ul{display:block;margin:0;list-style:none;}
+li{display:block;margin:0;padding:0;list-style: none;}
+/***         标题样式      ****/
+h3{font-family:'微软雅黑'; color:#FFF;}
+#topTitle h2{color:#0080FF; font-family:'微软雅黑';}
+#topTitle h2 span{font-size: 13px;color:#515151;}
+
+/***    启动项管理模块     ***/
+#qidong{width:660px;border-radius:5px; background:#C4E1FF;border:2px solid gray; margin:3px;}
+.table{margin:0 auto; position:relative;top:-8px;border-radius:5px; border:1px solid gray;}
+
+/*****      标题空格区域       ****/
+.space{width:1px;background:blue;}
+/*****    安装选项卡          *****/
+#install{width:655px;background:#C4E1FF; border-radius:8px;border:2px solid gray;margin:2px;}
+.wrap {
+	width:655px; position:relative;top:-2px; margin:0 auto;border: #b7c5d9 2px solid;background: #f0f6f9
+}
+.a10 {
+	FONT-WEIGHT: bold; COLOR: #0099cc;  TEXT-DECORATION: none;
+}
+.a10:hover {
+	COLOR: #bb2233; TEXT-DECORATION: underline
+}
+.md-head {
+	PADDING-LEFT: 0px; LINE-HEIGHT: 10px; HEIGHT: 10px
+}
+.md-head A {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 1px; FLOAT: left; BORDER-BOTTOM-WIDTH: 1px; MARGIN-LEFT: -1px; WIDTH: 426px; BACKGROUND-COLOR: #fff; TEXT-ALIGN: center; BORDER-RIGHT-WIDTH: 0px
+}
+.md-head A.wid {
+	WIDTH: 400px
+}
+.md-head A.cur {
+	BORDER-BOTTOM-WIDTH: 0px; COLOR: #000; BACKGROUND-COLOR: #f0f6f9; TEXT-DECORATION: none
+}
+.md-body {
+	padding:2px;ZOOM: 1
+}
+a,area { blr:e-xpression(this.onFocus=this.blur()) }
+:focus { -moz-outline-style: none; }
+
+/************    推荐模块布局        *************/
+#tuijian{width:640px;background:#C4E1FF; border-radius:3px; border:2px solid gray; margin:10px ;}
+
+
+/***********          按钮样式        *************/
+.button{width:80px; height:30px; border-radius:10px; margin-left:80px;margin-right:40px;margin-bottom:8px; border:2px solid gray;background:#1C86EE;color:#FFF;}
+.button:hover{filter:alpha(opacity=90);
+	-moz-opacity:0.8;
+	-khtml-opacity: 0.5;
+	opacity: 0.8;}
+/***********       头部导航BAR     ***************/
+.place{height:30px; font-size:13px; background:url(./images/righttop.gif) repeat-x;}
+.place span{line-height:30px; font-weight:bold;float:left; margin-left:12px;}
+.placeul li{float:left; line-height:10px; padding-left:7px; padding-right:12px; background:url(./images/rlist.gif) no-repeat right;}
+.placeul li:last-child{background:none;}
+.usual{width:670px;}
+</style>
+</head>
+
+<body>
+
+<!--  显示当前页面位置  -->
+<div class="place">
+	<span>位置：</span>
+	<ul class="placeul" style="padding-top:10px;">
+		<li><a href="first/index.html">首页</a></li><!--  为"首页"设置连接为first/index.html(即点击跳转到首页)  -->
+		<li><a href="quick.html">加速优化</a></li> <!--  为"加速优化"设置链接为quick.html(即点击刷新) -->
+	</ul>
+</div>
+
+<div class="formbody">
+	<div id="usual1" class="usual"> 
+		<div class="itab">
+			<ul> 
+				<li><a href="#tab1" class="selected">启动项管理</a></li>  <!--tab1启动项管理 -->
+				<li><a href="#tab2">优化工具</a></li> <!--tab2优化工具 -->
+			</ul>
+		</div> 
+		<div id='topTitle'>
+
+		</div><!--加速END-->
+		<!--  主容器  -->
+		<div id='container' style="margin-top:16px">
+
+			<div id='qidong'>
+
+	<!--  tab1启动项管理  -->
+				<div id="tab1" class="tabson" >
+	<!--  提示输入密码，并密文显示密码  -->
+<p style="color:red;margin-left:50px,margin-top:-10px;">*请输入当前用户密码: 
+	<input style="width:140px;border:solid 2px gray; border-radius:5px;" type='password' id="passwd1" name='pwd' class='input' />
+	<!--  小贴士按钮，点击调用opentips()函数，弹出一个新窗口，显示温馨提示信息  -->
+	<input style="border-radius:5px;margin-left:300px;background:#FFFACD" type="button" value="小贴士"onclick="opentips()"></input></p><td>
+					
+<table style="height:300px" class="table">
+						<tr>
+							<td width='50%'><input style="border-radius:5px;background:#FFFACD" type="button" value="显示已开启的启动项" onclick="run1()"/></td>
+							<td><input style="border-radius:5px;background:#FFFACD" type="button" value="显示已关闭的启动项" onclick="run2()"/></td>
+						</tr>
+						<tr>
+							<td>
+	<!--  把开机自启动项显示在文本框中  -->
+<textarea id="start1" rows="12.2" cols="37" margin="1px" style="border:solid 1px gray; border-radius:5px;" readonly>开机自启动项（s开头）</textarea>
+	<!--  实时显示开机自启动项  -->
+								<script type="text/javascript">
+function run1()
+{
+	window.setInterval("showopen()",700);
+}
+								</script>
+							</td>
+							<td>
+<!--  把开机不自启动项显示在文本框中  -->
+<textarea id="start2" rows="12.2" cols="37" margin="1px" style="border:solid 1px gray; border-radius:5px;" readonly>开机不自启动项（k开头）</textarea>
+	<!--  实时显示开机不自启动项  -->
+								<script type="text/javascript">
+function run2()
+{
+	window.setInterval("showclose()",700);
+}
+								</script>
+							</td>
+						</tr>
+						<tr style="margin:0px;padding:0px">
+
+							<td >
+								<form action="form_action.asp" method="get">
+									<table><p>已开启的启动项编号: 
+<!--  文本框，用于输入已开启的启动项编号 -->
+<input style="width:100px;border:solid 2px gray; border-radius:5px;" type="text" name="fname" id="close1" >
+<!--  关闭按钮，点击后调用closestart()函数，执行关闭操作  -->
+<input style="border-radius:5px;background:#FFFACD" type="button" value="关闭" onclick="closestart()"></p>
+<!--  显示关闭成功与否的信息 -->
+<p style="align:center;margin:0px;padding:0px" id="close2"></table>
+								</form>
+							</td>
+							<td >
+								<form action="form_action.asp" method="get">
+									<table><p>已关闭的启动项编号: 
+<!--  文本框，用于输入已关闭的启动项编号 -->
+<input style="width:100px;border:solid 2px gray; border-radius:5px;" type="text" name="fname"  id="open1" >
+<!--  开启按钮，点击后调用openstart()函数，执行开启操作  -->
+<input style="border-radius:5px;background:#FFFACD" type="button" value="开启"onclick="openstart()"></p>
+<!--  显示开启成功与否的信息 -->
+<p style="align:center;margin:0px;padding:0px" id="open2"></table>
+								</form>
+							</td>
+						</tr>
+					</table>
+				
+				
+				</div>
+
+			</div>
+		</div>
+
+<!--  tab1启动项管理  -->
+		<div id="tab2" class="tabson">
+
+	<!--  提示输入密码，并密文显示密码  -->
+<p style="color:red;margin-left:50px,margin-top:1px;">*请输入当前用户密码: 
+	<input style="width:140px;border:solid 2px gray; border-radius:5px;" type='password' id="passwd2" name='pwd' class='input' />
+	<!--  小贴士按钮，点击调用opentips()函数，弹出一个新窗口，显示温馨提示信息  -->
+	<input style="border-radius:5px;margin-left:300px;background:#FFFACD" type="button" value="小贴士"onclick="opentips()"></input></p><td>
+			<div id='install'>
+
+				<div class="wrap" id=divspacerank>
+					<DIV class=md-head id=blogs_spacerank>
+					</div>
+					<div class=md-body>
+						<div id=blogs_spacerank_0>
+						
+						<h2 style="margin-left:280px;font-size:20px;margin-top:0px;padding:0px"><b>优化工具推荐</b></h2>
+								<div style="margin-left:20px;margin-top:8px;padding:0px">	
+								<p><b>1. preload安装(需连网装)</b></p>
+							<p> preload 可以把一些常用的 lib 库和应用程序预加载到内存，来提高程序的启动速度！</p>	
+
+								<td>
+<!--  一键安装按钮，点击后调用installpreload()函数，执行安装操作 -->
+<input type="button" class='button' value="一键安装" onclick="installpreload()"/> 
+<!--  一键安装卸载，点击后调用uinstallpreload()函数，执行卸载操作 -->
+<input type="button" class='button' value="一键卸载" onclick="uinstallpreload()" />
+<!--  显示安装卸载成功与否的信息 -->
+<ins id="preload"></ins></td> 
+							</div>
+
+							</div>
+							<div id=blogs_spacerank_1>
+								<div style="margin-left:20px;">	
+								<p><b>2. sysv-rc-conf安装(需连网装)</b></p>
+								<p>sysv-rc-conf是一个强大的服务管理程序，管理Ubuntu的开机启动项，它的操作界面十分简洁，可用鼠标点击，也可用键盘方向键定位，用空格键选择，“X”表示开启该服务。 Ctrl+N翻下一页，Ctrl+P翻上一页，Q退出。<br>使用方法：sudo sysv-rc-conf</p>
+								<td>
+<!--  一键安装按钮，点击后调用installconf()函数，执行安装操作 -->
+<input type="button" class='button' value="一键安装" onclick="installconf()"/> 
+<!--  一键安装卸载，点击后调用uinstallconf()函数，执行卸载操作 -->
+	<input type="button" class='button' value="一键卸载" onclick="uinstallconf()"/>
+<!--  显示安装卸载成功与否的信息 -->
+<ins id="conf"></ins></td>
+								 </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--     选项卡js   -->
+			<script type='text/javascript'>
+var blogs_spacerank_index = 0,blogs_spacerank_class = 'a10 wrap ';
+var blogs_spacerank_list = document.getElementById('blogs_spacerank').getElementsByTagName('a');
+function blogs_spacerank_ck(_idx){
+	blogs_spacerank_list[blogs_spacerank_index].className = blogs_spacerank_class;
+	blogs_spacerank_list[_idx].className = blogs_spacerank_class + ' cur wid';
+	document.getElementById('blogs_spacerank_'+blogs_spacerank_index).style.display = 'none';
+	document.getElementById('blogs_spacerank_tab_'+blogs_spacerank_index).innerHTML = document.getElementById('blogs_spacerank_tab_'+blogs_spacerank_index).innerHTML.replace("安装","");
+	document.getElementById('blogs_spacerank_'+_idx).style.display = 'block';
+	document.getElementById('blogs_spacerank_tab_'+_idx).innerHTML = document.getElementById('blogs_spacerank_tab_'+_idx).innerHTML+"安装";
+	blogs_spacerank_index = _idx;
+}             
+			</script>
+
+			<script type="text/javascript"> 
+$("#usual1 ul").idTabs(); 
+			</script>
+
+		</div>
+		</body>
+		</html>

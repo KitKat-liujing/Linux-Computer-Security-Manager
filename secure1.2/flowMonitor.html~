@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,height=device-height">
+<title>流量监控</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="js/select-ui.min.js"></script>
+<script type="text/javascript" src="editor/kindeditor.js"></script>  
+<script src="js/blacklist.js"></script>
+<script src="js/flowMonitor.js"></script>
+<script src="js/jquery.js" ></script>
+<!--css样式-->
+<style type="text/css">
+  .button{width:100px; border-radius:10px; height:30px; color:#FFF;background:#0080FF;} 
+  #monitor{width:500px; position:relative;top:30px;left:110px;margin-bottom:20px}
+  #monitor ul li {float:left;margin:10px;position:relative; left:-10px;}
+  #monitor ul li div{color:#FFF;background:#0080FF;width:200px; border:2px solid gray;height:130px; border-radius:13px;               filter:alpha(opacity=90);
+                     -moz-opacity:0.8;
+                     -khtml-opacity: 0.5;
+                     opacity: 0.6;}
+  #monitor ul li div p{color:#FFF;position:relative;top:20px; font-size:24px; font-family: '微软雅黑'}
+  .clear{clear:both;}
+</style>
+</head>
+
+<body>
+<!--调用javascript函数-->
+<script>
+window.setInterval("ll()",200);
+window.setInterval("ll1()",200);
+window.setInterval("ll2()",200);
+window.setInterval("ll3()",200);
+</script>
+
+
+ <!--     监控主页面  -->  
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="first/index.html">首页</a></li><!--  为"首页"设置连接为first.html(即点击跳转到首页)  -->
+    <li><a href="flowMonitor.html">流量监控</a></li>  <!--  为"流量监控"设置链接为filecopy.html(即点击刷新) -->
+    </ul>
+ </div>
+  <div id='monitor'>
+ 
+     <ul>
+     	 <li style="font-size:20px"><div><b>&nbsp;下载速度:</b><p align="center" id="demo" ></p> </div></li>
+     	 <li style="font-size:20px"><div><b>&nbsp;上传速度:</b><p align="center" id="demo1"></p></div></li>
+     	 <li style="font-size:20px"><div><b>&nbsp;下载总流量:</b><p align="center" id="demo2"></p></div></li>
+     	 <li style="font-size:20px"><div><b>&nbsp;上传总流量:</b><p align="center" id="demo3"></p> </div></li>
+     
+     </ul>
+
+     <div class='clear'></div>
+  </div>
+<!--从终端获取密码-->
+<div style="margin-left:110px;margin-top:50px;"><h3>混杂模式流量监控：<p  style="color:red;margin-left:60px;margin-top:10px;">*请输入密码 : <input style="width:200px;border:solid 2px gray; border-radius:5px;" type="password" id="passwd" />
+<!--悬浮窗触发-->
+<button class='button'  type="button"  onclick="ll4()" style="width:100px;height:40px">开启悬浮窗口</button></div></h3>
+</body>
+</html>

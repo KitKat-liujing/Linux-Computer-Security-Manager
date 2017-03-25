@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<meta charset="utf-8"/>
+<head>
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<script src="js/filecopy.js"></script>
+<title>文件备份</title>
+<link rel="stylesheet" type="text/css" href="css/topNav.css" />
+
+<style type="text/css">
+/*        标题样式            */
+h3{color:#0080FF;width:600px; border-radius:5px; line-height:40px;background:#EBEBEB; height:40px; font-family: '微软雅黑';margin:20px 20px 40px 50px}
+h3 span{font-size: 13px; color:#515151;}
+p span{font-size: 18px;font-family:'微软雅黑';color:#000;}
+#single{ margin:5px; width:700px;}
+#document{margin:5px; width:700px;}
+/*        按钮样式         */
+.button{font-size:18px;width:150px;height:35px;border-radius:10px;color:#000;background:#F0F8FF;margin-top:20px}
+/*       文件选择样式      */
+.file{font-size:18px;margin-left:180px}
+/*       路径选择样式      */
+.select{font-size:20px;margin-top:15px}
+/*        居中显示　　　　*/ 
+body{text-align:center} 
+</style>
+
+</head>
+
+<body>    
+ <!--  显示当前位置  -->
+ <div class="place">
+    <span>位置：</span>
+     <ul class="placeul">
+		 <li><a href="first.html">首页</a></li>           <!--  为"首页"设置连接为first.html(即点击跳转到首页)  -->
+		 <li><a href="filecopy.html">文件备份</a></li>    <!--  为"文件备份"设置链接为filecopy.html(即点击刷新) -->
+    </ul>
+ </div>  
+
+  <!--  对于单个文件的操作  -->
+  <div id='single'>
+    <!--  打印提示信息  -->
+    <h3>文件备份<span>&nbsp;请选择单个文件</span></h3>
+    <!--  设置点击选择文件  -->
+    <input type="file" class='file' name="备份" id="fileid1" />
+　　　　<!--  设置下拉选择备份的路径  -->
+　　　　<p>选择路径
+      <select class='select' id="addr1" >
+  　　　  　<option value="~/">Home</option>
+  　　　　  <option value="~/文档/">文档</option>
+  　　　  　<option value="~/桌面">桌面</option>
+　　　　  </select>
+     
+	<!--   设置点击"开始备份"按钮，调用filecopy.js中的filecopy1()函数(用来备份单个文件)  -->
+    <button type="button" class='button' onclick="filecopy1()">开始备份</button>
+　　　　</p>
+    <!--  打印结果  -->
+    <p id="file1"></p> 
+    
+  </div>
+  
+
+
+  <!--  绘制分割线  -->
+  <hr style="border:1px dashed #ccc; width:700px;"/>
+  
+  <!--  对于文件夹的操作  -->
+  <div id='document'>
+    <!--  打印提示信息  -->
+    <h3>文件夹备份<span>&nbsp;请输入文件夹的绝对路径</span></h3>
+    <!--  设置在文本框内输入文件夹的绝对路径  -->
+    <p><span>文件夹的绝对路径      </span><input style="width:140px;border:solid 2px gray; border-radius:5px;" type="text"  name="备份" id="fileid2" />
+      <!--  设置下拉选择备份的路径  -->
+      <p>选择路径
+        <select class='select' id="addr2" >
+  　　　  　  <option value="~/">Home</option>
+  　　　　    <option value="~/文档/">文档</option>
+  　　　    　<option value="~/桌面">桌面</option>
+　　　　    </select>
+    <!--  设置点击"开始备份"按钮，调用filecopy.js中的filecopy2()函数(用来备份文件夹)  -->
+    <button type="button" class='button' onclick="filecopy2()">开始备份</button>
+　　  </p>
+    <!--  打印结果  -->
+    <p id="file2"></p> 
+    
+  </div>
+</body>
+</html>

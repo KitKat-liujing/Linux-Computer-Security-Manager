@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Linux电脑管家</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="js/jquery.js"></script>
+
+<script type="text/javascript">
+$(function(){	
+	//导航切换
+	$(".menuson li").click(function(){
+		$(".menuson li.active").removeClass("active")
+		$(this).addClass("active");
+	});
+	
+	$('.title').click(function(){
+		var $ul = $(this).next('ul');
+		$('dd').find('ul').slideUp();
+		if($ul.is(':visible')){
+			$(this).next('ul').slideUp();
+		}else{
+			$(this).next('ul').slideDown();
+		}
+	});
+})	
+</script>
+<style type="text/css">
+   body{width:800px;}
+</style>
+</head>
+<body style="background:#f0f9fd;">
+	<div class="lefttop"><span></span>功能导航</div>
+    
+    <dl class="leftmenu">
+        
+    <dd>
+    <div class="title" style="text-align:center">一键体检
+    </div>
+    	<ul class="menuson">
+	
+        <li><cite></cite><a href="examin.html" target="rightFrame">一键体检</a><i></i></li>
+        </ul>    
+    </dd>
+        
+
+	   <dd>
+    <div class="title" style="text-align:center">清理加速
+    </div>
+    	<ul class="menuson">
+
+        <li><cite></cite><a href="trashclean.html" target="rightFrame">垃圾清理</a><i></i></li>
+        <li><cite></cite><a href="quick.html" target="rightFrame">加速优化</a><i></i></li>
+       
+        </ul>    
+    </dd>	
+	    
+    
+    <dd><div class="title" style="text-align:center">
+   文件管理</div>
+    <ul class="menuson">
+        <li><cite></cite><a href="filecopy.html" target="rightFrame">文件备份</a><i></i></li>
+        <li><cite></cite><a href="encrypt.html" target="rightFrame">数据加密</a><i></i></li>
+    </ul>    
+    </dd>  
+    
+	
+	    <dd>
+    <div class="title" style="text-align:center">
+    网络安全
+    </div>
+    <ul class="menuson">
+        <li><cite></cite><a href="fireWall.html" target="rightFrame">防火墙</a><i></i></li>
+        
+        <li><cite></cite><a href="flowMonitor.html" target="rightFrame">网络流量监控</a><i></i></li>
+        </ul>     
+    </dd> 
+    
+    <dd><div class="title" style="text-align:center">病毒查杀</div>
+    <ul class="menuson">
+        <li><cite></cite><a href="kill_virus.html" target="rightFrame">病毒查杀</a><i></i></li>        
+    </ul>
+    
+    </dd>  
+
+	<dd>
+    <div class="title" style="text-align:center">
+   工具箱
+    </div>
+    <ul class="menuson">
+       <li><cite></cite><a href="baseinfo.html" target="rightFrame">电脑基本信息</a><i></i></li>
+        
+       <li><cite></cite><a href="progress.html" target="rightFrame">进程管理</a><i></i></li>
+        </ul>     
+    </dd>  	
+
+ <dd><div class="title" style="text-align:center">
+   安全保险箱</div>
+    <ul class="menuson">
+        <li><cite></cite><a href="safe.html" target="rightFrame">资料保护</a><i></i></li>
+        <li><cite></cite><a href="blacklist.html" target="rightFrame">黑名单</a><i></i></li>
+    </ul>    
+    </dd>  
+
+	    
+    
+    </dl>
+    
+
+</body>
+</html>

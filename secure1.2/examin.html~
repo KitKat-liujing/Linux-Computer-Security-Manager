@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>一键体检</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="js/select-ui.min.js"></script>
+<script type="text/javascript" src="editor/kindeditor.js"></script> 
+<script src="js/examin.js"></script>
+<!--button按钮样式设置外加进度条设置-->
+<style type="text/css">
+.button{width:100px; border-radius:10px; height:30px; color:#FFF;background:#0080FF;}
+
+ progress {
+  border-radius: 12px;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #999;
+  background: #ccc;
+  overflow: hidden;
+  position: relative;;
+}
+
+progress::-moz-progress-bar { background: #FFCC00; }
+progress::-webkit-progress-bar { background: #e6e6e6; }
+progress::-webkit-progress-value  { background: #5aaadb;
+  border-color: #459fd6 #3094d2 #277db2;
+  background-image: -webkit-linear-gradient(top, #aed5ed, #7bbbe2 70%, #5aaadb);
+  background-image: -moz-linear-gradient(top, #aed5ed, #7bbbe2 70%, #5aaadb);
+  background-image: -o-linear-gradient(top, #aed5ed, #7bbbe2 70%, #5aaadb);
+  background-image: linear-gradient(to bottom, #aed5ed, #7bbbe2 70%, #5aaadb);
+}
+</style>
+</head>
+
+
+<body>	
+<div class="place">
+	<span>位置：</span>
+	<ul class="placeul">
+		<li><a href="first/index.html">首页</a></li> <!--  为"首页"设置连接为first.html(即点击跳转到首页)  -->
+		<li><a href="examin.html">一键体检</a></li> <!--  为"一键体检"设置链接为filecopy.html(即点击刷新) -->
+	</ul>
+</div>
+<!--获取密码-->
+<p style="margin-top:18px;margin-left:47px;color:red">*请输入当前用户密码：<input style="width:140px;border:solid 2px gray; border-radius:5px;" type="password" id="passwd" />
+ <!--安装lynis 一键体检 卸载lynis模块-->
+<button class='button'  type="button" onclick="examin2()" style="width:100px;height:40px;border:solid 2px gray;">安装lynis</button>
+<button class='button'  type="button" onclick="examin()" style="width:120px;height:40px;color:yellow;border:solid 2px gray;">一键体检</button>
+<button class='button'  type="button" onclick="examin3()" style="width:100px;height:40px;border:solid 2px gray;">卸载lynis</button>
+<!--进度条-->
+<progress style="width:450px;height:26px;margin-top:10px;margin-left:97px;" id="prog1" max=100 value=0></progress>
+
+
+<!--p style="margin-left:150px; color:red;" id="demo1"></p-->
+
+<!--一键体检结果输出框-->
+<textarea id="demo" rows="5" cols="75" style="background-color:#F0F9FD;border:solid 2px gray; border-radius:10px; resize:none; margin-left:5px;margin-top:12px;" readonly>
+警告
+</textarea>
+<textarea id="demo4" rows="13" cols="75" style="background-color:#F0F9FD;border:solid 2px gray; border-radius:10px; resize:none; margin-left:5px;" readonly>
+建议
+</textarea>
+	
+		
+		
+</body>
+</html>

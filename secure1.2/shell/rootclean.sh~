@@ -1,0 +1,53 @@
+#需root权限的垃圾一键清理
+#!/bin/bash
+
+#清空回收站
+#验证密码是否正确
+echo $1 | sudo -S echo "" 2> /dev/null
+if [ $? == 0 ];then
+
+		
+
+#删除回收站里的东西,并把输出信息重定向到垃圾桶里
+	sudo -S rm -r $HOME/.local/share/Trash/files/* > /dev/null
+	if [ $? == 0 ];then
+		echo "-回收站清理成功！"
+	else
+		echo "-回收站已清空！"
+	fi
+
+#清理孤立包
+	sudo -S apt-get -y install deborphan -y > /dev/null
+	if [ $? == 0 ];then
+		echo "-孤立包清理成功！"
+	else
+		echo "-清理失败,请重试！"
+	fi
+#清理所有软件缓存
+	sudo -S apt-get -y clean > /dev/null
+	if [ $? == 0 ];then
+		echo "-所有软件缓存清理成功！"
+	else
+		echo "-清理失败,请重试！"
+	fi
+
+# 清理旧版本的软件缓存
+	sudo -S apt-get -y autoclean > /dev/null
+	if [ $? == 0 ];then
+		echo "-旧版本软件缓存清理成功！"
+	else
+		echo "-清理失败,请重试！"
+	fi
+
+#删除系统不再使用的孤立软件
+	sudo -S apt-get -y autoremove > /dev/null
+	if [ $? == 0 ];then
+		echo "-孤立软件清理成功！"
+	else
+		echo "-清理失败,请重试！"
+	fi
+	
+else 
+	echo "密码输入错误！"
+fi
+

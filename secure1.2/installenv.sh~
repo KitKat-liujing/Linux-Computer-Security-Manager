@@ -1,0 +1,10 @@
+#!/bin/bash
+#安装node-webkit环境
+
+sudo apt-get install g++ curl libssl-dev apache2-utils  
+sudo apt-get install git-core 
+    cd ~/node  
+    ./configure  
+    make  
+    sudo make install 
+sudo ln -sf /lib/i386-linux-gnu/libudev.so.1 /lib/i386-linux-gnu/libudev.so.0

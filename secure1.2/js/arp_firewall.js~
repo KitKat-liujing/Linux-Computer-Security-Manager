@@ -1,0 +1,35 @@
+var sys = require('sys');
+var exec = require('child_process').exec;
+
+function arp_open()
+{
+var passwd=document.getElementById("passwd2").value;
+if(passwd =="" ||passwd==undefined ||passwd==null)
+	alert("请输入当前用户密码！");
+else{
+var expr="bash ./shell/arp_open.sh "+passwd;
+exec(expr,function(error,stdout,stderr){
+	a=document.getElementById("arp_status");
+	a.innerHTML=stdout;
+	if(error!==null){
+		console.log('exec error:'+error)
+	}
+});
+}
+}
+function arp_close()
+{
+var passwd=document.getElementById("passwd2").value;
+if(passwd =="" ||passwd==undefined ||passwd==null)
+	alert("请输入当前用户密码！");
+else{
+var expr="bash ./shell/arp_close.sh "+passwd;
+exec(expr,function(error,stdout,stderr){
+	a=document.getElementById("arp_status");
+	a.innerHTML=stdout;
+	if(error!==null){
+		console.log('exec error:'+error)
+	}
+});
+}
+}

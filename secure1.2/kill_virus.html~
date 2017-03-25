@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,height=device-height">
+<title>病毒查杀</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+
+
+<script src="js/kill_virus.js"></script>
+	   <style type="text/css">
+         /*              按钮样式      */
+         .fBtn{width:120px; height:80px; position: relative;border-radius:12px; color:#FFF;font-size:13px;font-family:'微软雅黑';background:#1C86EE;}
+         .fBtn:hover{filter:alpha(opacity=90); -moz-opacity:0.8;-khtml-opacity: 0.5;opacity: 0.5;}
+         .list li{position: relative; float:left; margin-left:30px;}
+         .clear{clear:both;}
+        /*          显示框样式         */
+         #res1{width:700px; height:300px; border-radius:5px; margin-left:20px;}
+        /*           查杀样式         */
+        .dir{position:relative; left:20px;}
+	.usual{width:660px}
+	    </style>
+</head>
+
+<body>
+<!--页面标签导航-->
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="first/index.html">首页</a></li>
+    <li><a href="kill_virus.html">病毒查杀</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+      <!--页面分栏-->
+    
+    <div id="usual1" class="usual"> 
+    
+    <div class="itab">
+  	<ul> 
+    <li><a href="#tab1" class="selected">安装卸载</a></li> 
+    <li><a href="#tab2">全盘查杀</a></li> 
+    <li><a href="#tab3">选择杀毒</a></li>
+  	</ul>
+    </div> 
+    	<!--第一个页面-->
+  	<div id="tab1" class="tabson">
+    <div>
+	<!--密码输入框-->
+    <p style="margin-left:130px;margin-top:80px;color:red;">*请输入电脑的登录密码：<input style="width:180px;border:solid 2px gray; border-radius:5px;" type="password" id="passwd"></p>
+	</div>
+<table>	
+	<tr>
+	<td>
+	<img src="images/inst_clamav.png" width="80" height="80" style="margin-left:150px" /></td>
+<!--确认安装按钮，触发安装事件-->
+    <td><label>&nbsp;</label><h1><input style="margin-left:50px;background:#1C86EE;" name="install" type="button" class="btn" value="确认安装" onclick="install_SW()"/></h1></td></tr> 
+
+<tr>
+<td>
+	   <img src="images/del_clamav.png" width="80" height="80" style="margin-left:150px"/></td> 
+	
+<!--卸载按钮，触发卸载事件-->	
+    <td><label>&nbsp;</label><h1><input style="background:#1C86EE;margin-left:50px;" name="install" type="button" class="btn" value="一键卸载" onclick="del_SW()"/></h1></td>
+	
+</tr>
+</table>
+	<!--运行结果输出位置-->
+    <p><h3 id = "res1">  </h3></p>  
+    </div>   
+    <!--第二个页面-->
+    <div id="tab2" class="tabson">
+<div>
+<!--密码输入框-->
+ <p style="margin-left:50px;margin-top:55px;color:red">*请输入电脑的登录密码：<input style="width:180px;border:solid 2px gray; border-radius:5px;" type="password" id="passwd1"></p>
+	</div>	
+	<!--运行结果输出位置-->
+	<textarea style="border:solid 2px gray; border-radius:6px; margin-left:50px;background:#F0F9FD" cols="70" rows="14" id="res2" readonly></textarea>  
+<p></p>
+  <!--查杀按钮，触发查杀事件-->
+ <button style="margin-left:330px;background:#1C86EE;" class="btn" type="button" onclick="all_virus()">开始查杀</button>
+
+    </div>
+	<!--第三个页面-->
+    <div id="tab3" class="tabson">
+ <div id='kill-virus'>
+ 	<div id='select'>
+      <div class='dir'>
+<!--目录输入框-->
+         <p style="margin-left:50px;">查杀目录：<input style="width:180px;border:solid 2px gray; border-radius:5px;" type="text" id="path" name="filepath"></p>
+	<!--文件选择按钮-->
+	<p style="margin-left:50px;">查杀文件：<input type="file" id="filename" name="filename"> </p>
+      </div>
+    </div>
+    <div id='fun-list'>
+     <ul class='list'>
+	<!--显示所有文件信息按钮-->
+     	<li><input style="height:50px;margin-left:15px;background:#1C86EE;" type='button' class='fBtn' onclick='select_virus1()' value='显示所有文件信息'/></li>
+	<!--显示病毒文件按钮-->
+     	<li><input style="height:50px;background:#1C86EE;" type='button' class='fBtn' onclick='select_virus2()' value='显示病毒文件信息'/></li>
+	<!--删除病毒文件按钮-->
+        <li><input style="height:50px;background:#1C86EE;" type='button' class='fBtn' onclick='select_virus3()' value='删除病毒文件'/></li>
+	<!--信息写入文件按钮-->
+        <li><input style="height:50px;background:#1C86EE;" type='button' class='fBtn' onclick='select_virus4()' value='信息写入文件'/></li>
+     </ul>
+     <div class='clear'></div>
+    </div>
+<br />
+    <div class='screen'>
+	<!--结果输出框-->
+      <textarea  style="border:solid 2px gray; border-radius:6px;margin-left:40px;background:#F0F9FD" cols="72" rows="11" id="res3" readonly></textarea>
+    </div>
+ </div>
+
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+	</script>  
+   </div>    
+
+</body>
+</html>

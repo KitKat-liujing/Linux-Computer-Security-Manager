@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <title align=center >用户注册</title>
+<script src="js/login.js"></script>
+<body>
+<center>
+ <table width=50% border=1>
+<form method="post">
+  <tr>
+   <td>
+   <div align=center><strong>欢迎注册Linux电脑管家</strong>
+   </div>
+   <hr>
+   <!--注册名输入框-->
+   <p align=center>请输入你的用户名:
+   <input type=text name=username id="newuser"></p>
+   <!--密码输入框-->
+   <p align=center>请输入你的密码:
+   <input type=password name=pwd id="fir_pwd"></p>
+    <p align=center>请再次输入密码:
+   <input type=password name=pwd id="sec_pwd"></p>
+   <div align=center>
+    <!--确认注册按钮，触发信息写入数据库事件-->
+    <input type="button" value=注册 onclick="register()">
+    <input type=reset value=重置>
+   </div>
+    </td>
+  </tr>
+</form>
+ </table>
+<!--运行结果输出位置-->
+<p id="res"></p>
+</center>
+</body>
+</html>

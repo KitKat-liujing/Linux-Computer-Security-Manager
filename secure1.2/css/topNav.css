@@ -1,0 +1,11 @@
+ /**************  基本样式  **********/ 
+ a{text-decoration: none;color:#515151;}
+ body{font-family:'微软雅黑'; margin:0 auto;}
+ ul{display:block;margin:0;list-style:none;}
+ li{display:block;margin:0;padding:0;list-style: none;}
+
+ /*    *********     顶部分类样式    ****************/
+.place{height:40px; font-size:12px; background:url(../images/righttop.gif) repeat-x;}
+.place span{line-height:40px; font-weight:bold;float:left; margin-left:12px;}
+.placeul li{float:left; line-height:40px; padding-left:7px; padding-right:12px; background:url(../images/rlist.gif) no-repeat right;}
+.placeul li:last-child{background:none;}

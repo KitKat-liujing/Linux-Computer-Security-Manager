@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<meta charset="utf-8"/>
+<head>
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<meta name="viewport" content="width=device-width,height=device-height">
+<script src="js/encrypt.js"></script>
+<title>数据加密</title>
+<link rel="stylesheet" type="text/css" href="css/topNav.css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="js/select-ui.min.js"></script>
+<script type="text/javascript" src="editor/kindeditor.js"></script>
+<script>
+       window.setInterval("cat()",700);
+</script>
+<style type="text/css">
+/*       基本样式布局      */
+h2{font-size:20px;color:#0080FF; font-family:'微软雅黑';margin-top:0px}
+h2 span{font-size: 16px; color:#515151;}
+/*        标题样式         */
+h3{font-size: 20px;color:#0080FF;width:600px; border-radius:5px; line-height:40px;background:#EBEBEB; height:40px; font-family: '微软雅黑';margin:20px 20px 0 50px}
+h3 span{font-size: 18px; color:#515151;}
+p span{font-size: 18px;font-family:'微软雅黑';color:#515151;}
+#single{ margin:20px 20px 0 20px;padding:0; width:700px}
+#document{margin:20px 20px 0 20px;padding:0; width:700px}
+ /*        提示样式          */
+ .tips{background:#FFFFCE; width:600px; height:40px; font-family: '微软雅黑';font-size:16px; line-height: 40px; border-radius:5px; margin:0 50px 0 50px}
+ /*        按钮样式         */
+  .button{font-size:18px;width:100px;height:25px;border-radius:10px; height:35px; color:#000;background:#F0F8FF;margin-top:30px}
+  /*       文件选择样式      */
+.file{font-size:18px}
+/*          内容框样式       */
+#encrypted{width:700px;}
+.jia{width:700px;}
+.jie{width:700px;}
+.usual{width:700px;}
+/*        居中显示　　　　*/ 
+body{text-align:center} 
+</style>
+</head>
+
+<body>
+    <!--  标明当前位置  -->
+    <div class="place">
+        <span>位置：</span>
+          <ul class="placeul">
+	    <li><a href="first.html">首页</a></li>   <!--  为"首页"设置链接为first.html(即点击跳转到首页)  -->
+	    <li><a href="encrypt.html">数据加密</a></li>  <!--  为"数据加密"设置链接为encrypt.html(即点击刷新)  -->
+          </ul>
+    </div>
+    
+	<!--  分标签页  -->
+    <div id="usual1" class="usual"> 
+    <div class="itab">
+       <ul> 
+		   <li><a href="#tab1">已加密的数据</a></li>    <!--  标签页1为"已加密数据"用于动态显示已加密数据  -->
+		   <li><a href="#tab2">加密/解密</a></li>       <!--  标签页2为"加密/解密"用于进行加密/解密操作  -->  
+       </ul>
+    </div> 
+
+	<!--  标签页1  -->
+    <div id="tab1">
+ 　　<div id='encrypted'>
+     <h2 style="text-align:center">数据加密/解密<span>&nbsp;为文件保驾护航</span></h2>
+     <!--    查看已加密的数据   -->
+     <div id='encrypted'>
+        <h3>&nbsp;已加密数据</h3>
+		<!--  设置点击按钮，调用encrypt.js中的cat()函数(用来显示加密日志中的内容)  -->
+        <p class='tips'><font size='2'></font>
+已加密的数据如下后面对数据加密/解密的操作，这里都会实时更新呦~</p> 
+	    <!--  在文本框内显示已加密数据  -->
+        <textarea id="cat" rows="10" cols="72" style="border:solid 2px gray; border-radius:10px;margin:30px " readonly>
+        </textarea>
+	  
+     </div>
+　　 </div>
+     </div>
+	 <!--  标签页2  -->
+     <div id="tab2">
+     <!--数据加密/解密-->
+     
+	 <!--  数据加密  -->
+	 <div id='jiami'>
+         <div class='jia'>
+          <h3>&nbsp;数据加密</h3>
+		  <!--  打印出提示信息  -->
+          <p class='tips'><font color='red' size='2'></font>   
+            请选择要加密的文件,文件内容可以包含数字，字母，也可以包含汉字等各种字符</p>
+          <p class='tips'><font color='red' size='2'></font>
+            你可以加密.txt文件，甚至是.c或者.sh文件
+          </p>
+		  <!--  设置点击选择文件  -->
+          <input type="file" class='file' name="加密" id="encryptid"/>
+		  <!--  设置点击按钮，调用encrypt.js中的encrypt()函数(用来对数据进行加密)  -->
+	      <button type="button" class='button' onclick="encrypt()">加密</button>
+			<!--  打印结果  -->
+		  <p id="encrypt"></p> 
+          
+        </div>
+        <!--  绘制分隔符  -->
+	<hr style="border:1px dashed #ccc; width:690px;margin-left:10px"/>
+		<!--  数据解密  -->
+        <div class='jie'>
+            <h3>&nbsp;数据解密</h3>
+			<!--  打印出提示信息  -->
+            <p class='tips'><font color='red' size='2'></font> 
+              如果要解密，请选择文件然后点击“解密”按钮
+            </p>
+			<!--  设置点击选择文件  -->
+            <input type="file" class='file' name="解密" id="decryptid"/>
+			<!--  设置点击按钮，条用encrypt.js中的decrypt()函数(用来对数据进行解密)  -->
+	        <button type="button" class='button' onclick="decrypt()">解密</button>
+			<!--  打印结果  -->
+			<p id="decrypt"></p>
+           
+
+       </div>
+   </div>
+   <script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+   </div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta Content-type='text/html'  charset="UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height">
+<title>加速优化</title>
+</head>
+<body style="background:#f0f9fd;">
+<h4>小贴士：</h4>
+<pre>
+启动项管理须知：
+    在 /etc/rc*.d 中。K开头是 kill, S开头是 start , 数字顺序代表启动的顺序。
+    Ubuntu中的运行级别
+      0（关闭系统）
+      1（单用户模式，只允许root用户对系统进行维护。）
+      2 到 5（多用户模式，其中3为字符界面，5为图形界面。）
+      6（重启系统）
+    通常情况下 /etc/rcS.d/ 目录下的启动脚本首先被执行，然后是/etc/rcN.d/ 目录。
+
+使用sysv-rc-conf工具时的启动项开关建议：
+    建议关闭：atd、ntpdate
+    建议开启：ssh ssh、cron、binfm-support、bootlogd、modure-init-tool
+<pre>
+</body>
+</html>
